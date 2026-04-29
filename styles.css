@@ -385,32 +385,117 @@ body {
   background: rgba(0, 0, 0, 0.54);
 }
 
-/* Team duo layout */
-.team-grid--duo {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  max-width: 26rem;
+/* Founder cards — two-up layout */
+.founders-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  max-width: 56rem;
+  margin-inline: auto;
 }
 
-@media (min-width: 640px) {
-  .team-grid--duo {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-width: 30rem;
+@media (min-width: 680px) {
+  .founders-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-.team-card--duo .team-card-avatar {
-  aspect-ratio: 4 / 5;
+.founder-card {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
 }
 
-.team-card--duo .team-card-name {
-  font-size: 1rem;
+.founder-photo {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #d0dde6;
+}
+
+.founder-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.founder-photo--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #c8d9e6 0%, #d8e8ef 100%);
+}
+
+.founder-photo--placeholder svg {
+  width: 56px;
+  height: 56px;
+  color: #7fa8c0;
+  opacity: 0.7;
+}
+
+.founder-info {
+  padding: var(--space-md) var(--space-md) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.founder-name {
+  font-size: 1.2rem;
   font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin: 0;
 }
 
-.team-card--duo .team-card-role {
+.founder-role {
   font-size: 0.875rem;
+  font-weight: 600;
   color: var(--color-brand-muted);
-  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.4rem;
+}
+
+.founder-bio {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  margin: 0;
+  flex: 1;
+}
+
+.founder-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: var(--space-sm);
+}
+
+.founder-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-brand);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.founder-link:hover {
+  color: var(--color-brand-muted);
+}
+
+.founder-link svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
 }
 
 .hero--page .hero-label {
@@ -435,6 +520,14 @@ body {
 .hero--contact  { background: #0d1117; }
 .hero--giving   { background: #1a0e08; }
 .hero--partners { background: #111827; }
+
+/* Dark overlay for all image-backed inner heroes */
+.hero--about .hero-bg::after,
+.hero--partners .hero-bg::after,
+.hero--contact .hero-bg::after,
+.hero--giving .hero-bg::after {
+  background: rgba(0, 0, 0, 0.54);
+}
 
 /* Buttons */
 .btn {
